@@ -8,7 +8,7 @@
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#grad1)" rx="15" ry="15"/>
-  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white">Awesome Fast Gradient Sign Method</text>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="white">Awesome Fast Gradient Sign Method</text>
   <circle cx="50" cy="50" r="20" fill="white" opacity="0.3">
     <animate attributeName="cy" values="50;150;50" dur="3s" repeatCount="indefinite"/>
   </circle>

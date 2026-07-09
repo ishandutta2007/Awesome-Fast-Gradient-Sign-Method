@@ -1,0 +1,1 @@
+# Establish an automated performance profiling suite using Triton\n\nDetailed info about Establish an automated performance profiling suite using Triton.\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

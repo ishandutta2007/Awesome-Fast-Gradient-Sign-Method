@@ -1,0 +1,1 @@
+# Biometric Facial Recognition Evasion & Spoofing Audits\n\nDetailed info about Biometric Facial Recognition Evasion & Spoofing Audits.\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

@@ -1,0 +1,1 @@
+# The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017)\n\nDetailed info about The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017).\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

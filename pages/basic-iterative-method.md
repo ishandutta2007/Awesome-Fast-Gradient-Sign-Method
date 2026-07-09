@@ -1,0 +1,1 @@
+# The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016)\n\nDetailed info about The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016).\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

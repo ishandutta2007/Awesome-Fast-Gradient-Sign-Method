@@ -1,0 +1,1 @@
+# The Single-Step Linearization Era (Vanilla FGSM, 2014–2015)\n\nDetailed info about The Single-Step Linearization Era (Vanilla FGSM, 2014–2015).\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

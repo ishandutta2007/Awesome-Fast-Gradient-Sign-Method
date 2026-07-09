@@ -1,0 +1,1 @@
+# Generate a comprehensive Markdown table explicitly comparing variants\n\nDetailed info about Generate a comprehensive Markdown table explicitly comparing variants.\n\n## Overview Diagram\n\n```mermaid\nflowchart TD\n  A[Start] --> B[Process]\n  B --> C[Result]\n```\n\n[Back to Home](../README.md)

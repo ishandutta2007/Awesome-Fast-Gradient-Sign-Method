@@ -47,10 +47,10 @@ flowchart LR
 
 | Era/Method | Year | Paper Link | Description |
 |---|---|---|---|
-| The Single-Step Linearization Era (Vanilla FGSM, 2014–2015) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The historical baseline that launched the field... |
-| The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016) | 2016 | [Kurakin et al.](https://arxiv.org/abs/1607.02533) | Overcame single-step boundaries by breaking the perturbation... |
-| The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017) | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Polished iterative optimization into a mathematically rigorous... |
-| The Multi-Modal & Latent Token Override Era (~2024–Present) | 2024 | [Recent Works](#) | The current modern state-of-the-art security frontier... |
+| [The Single-Step Linearization Era (Vanilla FGSM, 2014–2015)](pages/vanilla-fgsm.md) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The historical baseline that launched the field... |
+| [The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016)](pages/basic-iterative-method.md) | 2016 | [Kurakin et al.](https://arxiv.org/abs/1607.02533) | Overcame single-step boundaries by breaking the perturbation... |
+| [The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017)](pages/pgd.md) | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Polished iterative optimization into a mathematically rigorous... |
+| [The Multi-Modal & Latent Token Override Era (~2024–Present)](pages/multi-modal-vlm.md) | 2024 | [Recent Works](#) | The current modern state-of-the-art security frontier... |
 
 
 ---
@@ -61,10 +61,10 @@ The FGSM lineage features specialized mathematical variations engineered to enfo
 
 | Variant | Year | Paper Link | Description |
 |---|---|---|---|
-| Non-Targeted FGSM (Maximizing Cross-Entropy) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The baseline formulation driving prediction away from true state. |
-| Targeted FGSM (Directional Subversion) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | Forces the model to output a highly specific, incorrect target class. |
-| Momentum Iterative FGSM (MI-FGSM) | 2018 | [Dong et al.](https://arxiv.org/abs/1710.06081) | Integrates a momentum velocity constant to prevent getting stuck in local extrema. |
-| Fast Adversarial Training (Fast FGSM) | 2020 | [Wong et al.](https://arxiv.org/abs/2001.03994) | Repurposes FGSM from an offensive exploit tool into a high-speed defensive regularizer. |
+| [Non-Targeted FGSM (Maximizing Cross-Entropy)](pages/non-targeted-fgsm.md) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The baseline formulation driving prediction away from true state. |
+| [Targeted FGSM (Directional Subversion)](pages/targeted-fgsm.md) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | Forces the model to output a highly specific, incorrect target class. |
+| [Momentum Iterative FGSM (MI-FGSM)](pages/momentum-iterative-fgsm.md) | 2018 | [Dong et al.](https://arxiv.org/abs/1710.06081) | Integrates a momentum velocity constant to prevent getting stuck in local extrema. |
+| [Fast Adversarial Training (Fast FGSM)](pages/fast-fgsm.md) | 2020 | [Wong et al.](https://arxiv.org/abs/2001.03994) | Repurposes FGSM from an offensive exploit tool into a high-speed defensive regularizer. |
 
 
 ---
@@ -75,8 +75,8 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 
 | Challenge | Year | Paper Link | Description |
 |---|---|---|---|
-| The Computational Overhead Wall of Robust Training | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Intense computational overhead for adversarial training. |
-| The Robustness vs. Clean Accuracy Trade-Off (The Alignment Tax) | 2019 | [Zhang et al.](https://arxiv.org/abs/1901.08573) | Accuracy drops on standard datasets due to robust boundaries. |
+| [The Computational Overhead Wall of Robust Training](pages/computational-overhead.md) | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Intense computational overhead for adversarial training. |
+| [The Robustness vs. Clean Accuracy Trade-Off (The Alignment Tax)](pages/alignment-tax.md) | 2019 | [Zhang et al.](https://arxiv.org/abs/1901.08573) | Accuracy drops on standard datasets due to robust boundaries. |
 
 
 ---
@@ -85,9 +85,9 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 
 | Application | Year | Paper Link | Description |
 |---|---|---|---|
-| Autonomous Vehicle Vision Array Hardening | 2018 | [Eykholt et al.](https://arxiv.org/abs/1807.10471) | Secures computer vision stacks against physical-world spatial exploits. |
-| Biometric Facial Recognition Evasion & Spoofing Audits | 2016 | [Sharif et al.](https://arxiv.org/abs/1610.04618) | Hardens physical checkpoints and authentication infrastructure. |
-| Cross-Modal Foundation Agent Red-Teaming (VLM Guardrails) | 2024 | [Modern Audits](#) | Secures multimodal systems against indirect injections. |
+| [Autonomous Vehicle Vision Array Hardening](pages/av-vision-hardening.md) | 2018 | [Eykholt et al.](https://arxiv.org/abs/1807.10471) | Secures computer vision stacks against physical-world spatial exploits. |
+| [Biometric Facial Recognition Evasion & Spoofing Audits](pages/facial-recognition-evasion.md) | 2016 | [Sharif et al.](https://arxiv.org/abs/1610.04618) | Hardens physical checkpoints and authentication infrastructure. |
+| [Cross-Modal Foundation Agent Red-Teaming (VLM Guardrails)](pages/vlm-guardrails.md) | 2024 | [Modern Audits](#) | Secures multimodal systems against indirect injections. |
 
 
 ---
@@ -105,9 +105,9 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 To advance this documentation repository, secure development context, or threat-modeling framework, consider exploring these adjacent development pathways:
 | Pathway | Year | Paper Link | Description |
 |---|---|---|---|
-| Build a Python script using PyTorch and Torchattacks | 2020 | [Torchattacks](https://github.com/Harry24k/adversarial-attacks-pytorch) | Automated adversarial generation pipeline. |
-| Generate a comprehensive Markdown table explicitly comparing variants | 2024 | [N/A](#) | Compare time complexities, mathematical vector norms, etc. |
-| Establish an automated performance profiling suite using Triton | 2024 | [N/A](#) | Track computational throughput, VRAM utilization, etc. |
+| [Build a Python script using PyTorch and Torchattacks](pages/pytorch-torchattacks-script.md) | 2020 | [Torchattacks](https://github.com/Harry24k/adversarial-attacks-pytorch) | Automated adversarial generation pipeline. |
+| [Generate a comprehensive Markdown table explicitly comparing variants](pages/variant-comparison-table.md) | 2024 | [N/A](#) | Compare time complexities, mathematical vector norms, etc. |
+| [Establish an automated performance profiling suite using Triton](pages/triton-performance-profiling.md) | 2024 | [N/A](#) | Track computational throughput, VRAM utilization, etc. |
 
 
 ***

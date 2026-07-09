@@ -39,7 +39,10 @@ The foundational formulation of FGSM derives an adversarial perturbation by line
 The technical implementation of gradient-based exploitation has transitioned from rapid single-step mathematical shifts to fine-grained multi-step iterative optimizations and automated cross-modal prompt subversions.
 
 ```mermaid
-[Single-Step FGSM (Goodfellow, 2014)] ───> [Iterative Steps / Basic Iterative (I-FGSM, 2016)] ───> [Projected Gradient Descent (PGD, 2017)] ───> [Cross-Modal Injections (Modern Era)](Fast but Brittle Non-Iterative Mask)        (Incremental Local Boundary Probing)              (The Ultimate Multi-Step Optimization)         (Token-Level Pixel Latent Overrides)
+flowchart LR
+    A["Single-Step FGSM (Goodfellow, 2014)<br>(Fast but Brittle Non-Iterative Mask)"] --> B["Iterative Steps / Basic Iterative (I-FGSM, 2016)<br>(Incremental Local Boundary Probing)"]
+    B --> C["Projected Gradient Descent (PGD, 2017)<br>(The Ultimate Multi-Step Optimization)"]
+    C --> D["Cross-Modal Injections (Modern Era)<br>(Token-Level Pixel Latent Overrides)"]
 ```
 
 *   **The Single-Step Linearization Era (Vanilla FGSM, 2014–2015)**

@@ -1,4 +1,13 @@
 # Awesome-Fast-Gradient-Sign-Method
+
+<div align="center">
+  <img src="assets/banner.svg" alt="Banner" width="100%">
+</div>
+
+<p align="center">
+<a href="https://github.com/ishandutta2007/Awesome-Awesome-Awesome"><img src="https://img.shields.io/badge/Awesome-%E2%9C%94-blueviolet?style=flat-square&logo=github" alt="Awesome"/></a><a href="https://discord.gg/jc4xtF58Ve"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+</p>
+
 ## Fast Gradient Sign Method (FGSM): Derivation, Progression, Variants, & Robustness
 
 The **Fast Gradient Sign Method (FGSM)** is a foundational white-box adversarial attack framework designed to expose and evaluate vulnerabilities in machine learning architectures, particularly Deep Convolutional Neural Networks (CNNs). Formalized by Ian Goodfellow, Jonathon Shlens, and Christian Szegedy in 2014 ("Explaining and Harnessing Adversarial Examples"), FGSM dismantled the prevailing assumption that neural network misclassifications were caused solely by extreme non-linearities or overfitting. 

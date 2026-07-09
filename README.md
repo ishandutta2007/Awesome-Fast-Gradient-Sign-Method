@@ -7,7 +7,7 @@ Instead, Goodfellow et al. demonstrated that deep models suffer from high vulner
 
 ---
 
-## 1. Mathematical Derivation
+## 🧮 1. Mathematical Derivation
 
 The foundational formulation of FGSM derives an adversarial perturbation by linearizing the model's cost function around the input tensor, taking a single step scaled by an optimization boundary parameter ($\epsilon$) in the direction of the loss gradient's sign.
 
@@ -34,7 +34,7 @@ The foundational formulation of FGSM derives an adversarial perturbation by line
 
 ---
 
-## 2. The Macro Chronological Evolution
+## ⏳ 2. The Macro Chronological Evolution
 
 The technical implementation of gradient-based exploitation has transitioned from rapid single-step mathematical shifts to fine-grained multi-step iterative optimizations and automated cross-modal prompt subversions.
 
@@ -55,7 +55,7 @@ flowchart LR
 
 ---
 
-## 3. Core Algorithmic & Strategic Variants
+## 🧬 3. Core Algorithmic & Strategic Variants
 
 The FGSM lineage features specialized mathematical variations engineered to enforce targeted classifications, introduce momentum coefficients, or minimize hardware gradient calculations.
 
@@ -69,7 +69,7 @@ The FGSM lineage features specialized mathematical variations engineered to enfo
 
 ---
 
-## 4. Production Engineering Challenges & Hardening Countermeasures
+## ⚙️ 4. Production Engineering Challenges & Hardening Countermeasures
 
 Deploying and scaling adversarial defense frameworks across enterprise AI serving nodes introduces intense computational and parameter accuracy trade-offs.
 
@@ -81,7 +81,7 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 
 ---
 
-## 5. Frontier Real-World AI Security Applications
+## 🛡️ 5. Frontier Real-World AI Security Applications
 
 | Application | Year | Paper Link | Description |
 |---|---|---|---|
@@ -92,7 +92,7 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 
 ---
 
-## References
+## 📚 References
 1. Szegedy, C., et al. (2013). Intriguing properties of neural networks. *arXiv preprint arXiv:1312.6199*.
 2. Goodfellow, I. J., Shlens, J., & Szegedy, C. (2014). Explaining and harnessing adversarial examples. *International Conference on Learning Representations (ICLR)*.
 3. Kurakin, A., Goodfellow, I., & Bengio, S. (2016). Adversarial examples in the physical world. *arXiv preprint arXiv:1607.02533*.

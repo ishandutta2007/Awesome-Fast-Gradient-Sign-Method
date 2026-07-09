@@ -45,18 +45,13 @@ flowchart LR
     C --> D["Cross-Modal Injections (Modern Era)<br>(Token-Level Pixel Latent Overrides)"]
 ```
 
-*   **The Single-Step Linearization Era (Vanilla FGSM, 2014–2015)**
-    *   *Concept:* The historical baseline that launched the field of adversarial machine learning. It treated adversarial synthesis as a low-cost, single-pass calculus step. By evaluating the gradient signature once, it proved that models could be blinded instantly with near-zero computational overhead.
-    *   *Limitation:* Highly brittle and easily defended. Because it calculates a coarse, single-step linearization, the synthesized perturbation frequently overshoots the true local decision boundary, failing to transfer across alternative model graphs.
-*   **The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016)**
-    *   *Concept:* Overcame single-step boundaries by breaking the perturbation loop into multiple smaller, incremental updates. Introduced by Kurakin et al. as the **Basic Iterative Method (BIM)**, it splits the global step ($\epsilon$) into multiple fine-grained sub-steps ($\alpha$), intermediate clipping operations to hold the tensor within safe boundaries after each pass.
-    *   *Significance:* Radically increased attack success rates, ensuring the perturbation closely hugs the model's true non-linear decision hyperplanes.
-*   **The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017)**
-    *   *Concept:* Polished iterative optimization into a mathematically rigorous, minimax baseline framework. **Projected Gradient Descent (PGD)** initiates the loop by injecting a random uniform noise offset into the input vector before starting the iterative gradient sign steps, recursively projecting the tensor back into an $L_\infty$ or $L_2$ ball boundary.
-    *   *Significance:* Celebrated as the ultimate first-order white-box adversarial attack baseline, forming the standard benchmark used to evaluate model robustness globally.
-*   **The Multi-Modal & Latent Token Override Era (~2024–Present)**
-    *   *Concept:* The current modern state-of-the-art security frontier. Moves past simple image pixel disruption to target unified **Vision-Language Models (VLMs)** and foundation architectures.
-    *   *Significance:* Instead of targeting standalone CNN classifiers, optimized gradient-sign algorithms compute adversarial multi-modal patch masks. Appending a corrupted pixel layer to a graphic causes the VLM's vision encoder to emit latent token projections that completely override text system prompts, triggering indirect prompt injections and safety guardrail bypasses invisibly.
+| Era/Method | Year | Paper Link | Description |
+|---|---|---|---|
+| The Single-Step Linearization Era (Vanilla FGSM, 2014–2015) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The historical baseline that launched the field... |
+| The Basic Iterative & Step Splitting Era (I-FGSM / BIM, 2016) | 2016 | [Kurakin et al.](https://arxiv.org/abs/1607.02533) | Overcame single-step boundaries by breaking the perturbation... |
+| The Projected Gradient Descent Universal Standard (PGD, Madry et al., 2017) | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Polished iterative optimization into a mathematically rigorous... |
+| The Multi-Modal & Latent Token Override Era (~2024–Present) | 2024 | [Recent Works](#) | The current modern state-of-the-art security frontier... |
+
 
 ---
 
@@ -64,19 +59,13 @@ flowchart LR
 
 The FGSM lineage features specialized mathematical variations engineered to enforce targeted classifications, introduce momentum coefficients, or minimize hardware gradient calculations.
 
-- ### A. Non-Targeted FGSM (Maximizing Cross-Entropy)
-	*   **Mechanism:** The baseline formulation. It calculates gradients to maximize the model's cost function with respect to the *correct ground-truth label*, driving the model's prediction away from its true state into an arbitrary incorrect category.
+| Variant | Year | Paper Link | Description |
+|---|---|---|---|
+| Non-Targeted FGSM (Maximizing Cross-Entropy) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | The baseline formulation driving prediction away from true state. |
+| Targeted FGSM (Directional Subversion) | 2014 | [Goodfellow et al.](https://arxiv.org/abs/1412.6572) | Forces the model to output a highly specific, incorrect target class. |
+| Momentum Iterative FGSM (MI-FGSM) | 2018 | [Dong et al.](https://arxiv.org/abs/1710.06081) | Integrates a momentum velocity constant to prevent getting stuck in local extrema. |
+| Fast Adversarial Training (Fast FGSM) | 2020 | [Wong et al.](https://arxiv.org/abs/2001.03994) | Repurposes FGSM from an offensive exploit tool into a high-speed defensive regularizer. |
 
-- ### B. Targeted FGSM (Directional Subversion)
-	*   **Mechanism:** Restructures the optimization graph to force the model to output a highly specific, incorrect target class ($y_{\text{target}}$) chosen by the attacker. It computes gradients to *minimize* the cost function with respect to that false target:
-	    $$x_{\text{adv}} = x - \epsilon \cdot \text{sign}\left(\nabla_x J(\theta, x, y_{\text{target}})\right)$$
-
-- ### C. Momentum Iterative FGSM (MI-FGSM)
-	*   **Mechanism:** Integrates a momentum velocity constant ($\mu$) straight into the iterative gradient calculation steps, smoothing out step trajectories to prevent the optimizer from getting stuck in poor, localized local extrema.
-	*   **Pros:** Radically increases the **adversarial transferability** of perturbations, allowing an attack calculated over an offline substitute model to easily break a hidden cloud API.
-
-- ### D. Fast Adversarial Training (Fast FGSM)
-	*   **Mechanism:** Repurposes FGSM from an offensive exploit tool into a high-speed defensive regularizer. Developed by Wong et al., it injects random initialization noise followed by a single-step FGSM calculation during every batch pass of pre-training, providing robust PGD-level model hardening at a fraction of the traditional training compute cost.
 
 ---
 
@@ -84,23 +73,22 @@ The FGSM lineage features specialized mathematical variations engineered to enfo
 
 Deploying and scaling adversarial defense frameworks across enterprise AI serving nodes introduces intense computational and parameter accuracy trade-offs.
 
-*   **The Computational Overhead Wall of Robust Training**
-    *   *The Problem:* The most effective way to harden an architecture against FGSM and PGD variants is **Adversarial Training**—explicitly optimizing the model weights over online-generated adversarial samples during every step of pre-training. However, running inner optimization loops to compute gradients with respect to inputs multiplies baseline model training duration by up to $3\times$ to $10\times$, creating massive infrastructure bottlenecks.
-    *   *Mitigation:* Implementing **Fast FGSM schedules with mixed-precision arithmetic (FP16/BF16 operators)**, caching intermediate activation tensors cleanly inside fast register arrays to minimize global High Bandwidth Memory read/write cycles.
-*   **The Robustness vs. Clean Accuracy Trade-Off (The Alignment Tax)**
-    *   *The Problem:* Enforcing strict certified adversarial robustness boundaries alters the geometry of a model's latent representation manifolds. Forcing the network to ignore low-level high-frequency gradient features makes it less sensitive, frequently resulting in minor accuracy drops on standard, non-corrupted human datasets.
-    *   *Mitigation:* Implementing **TRADES loss optimization parameters**, which introduce a tunable regularization dial to let infrastructure engineering teams precisely balance clean data precision against strict certified robustness ceilings based on the deployment domain.
+| Challenge | Year | Paper Link | Description |
+|---|---|---|---|
+| The Computational Overhead Wall of Robust Training | 2017 | [Madry et al.](https://arxiv.org/abs/1706.06083) | Intense computational overhead for adversarial training. |
+| The Robustness vs. Clean Accuracy Trade-Off (The Alignment Tax) | 2019 | [Zhang et al.](https://arxiv.org/abs/1901.08573) | Accuracy drops on standard datasets due to robust boundaries. |
+
 
 ---
 
 ## 5. Frontier Real-World AI Security Applications
 
-*   **Autonomous Vehicle Vision Array Hardening**
-    *   *Application:* Secures the computer vision perception stacks of autonomous vehicles and drones against physical-world spatial exploits. Engineering teams use multi-scale iterative FGSM variants to evaluate cameras against universal adversarial stickers (such as localized patch patterns applied to stop signs that fool standard CNNs into reading a speed limit sign), utilizing robust adversarial pre-training to guarantee safe navigation bounds.
-*   **Biometric Facial Recognition Evasion & Spoofing Audits**
-    *   *Application:* Hardens high-security physical checkpoints and authentication infrastructure. Security modules evaluate facial-matching backbones against adversarial eyewear frames or printed mask textures synthesized via targeted gradient-sign loops, forcing model parameters to isolate genuine, sub-surface liveness traits over superficial pixel configurations.
-*   **Cross-Modal Foundation Agent Red-Teaming (VLM Guardrails)**
-    *   *Application:* Secures multimodal enterprise tool-orchestration systems against indirect injections. Red-teaming orchestrators deploy discrete token-space gradient-sign methods to discover and patch hidden pixel vulnerabilities within corporate document-parsing loops, preventing malicious graphics from hijacking an agent's backend function-calling privileges.
+| Application | Year | Paper Link | Description |
+|---|---|---|---|
+| Autonomous Vehicle Vision Array Hardening | 2018 | [Eykholt et al.](https://arxiv.org/abs/1807.10471) | Secures computer vision stacks against physical-world spatial exploits. |
+| Biometric Facial Recognition Evasion & Spoofing Audits | 2016 | [Sharif et al.](https://arxiv.org/abs/1610.04618) | Hardens physical checkpoints and authentication infrastructure. |
+| Cross-Modal Foundation Agent Red-Teaming (VLM Guardrails) | 2024 | [Modern Audits](#) | Secures multimodal systems against indirect injections. |
+
 
 ---
 
@@ -115,9 +103,12 @@ Deploying and scaling adversarial defense frameworks across enterprise AI servin
 ---
 
 To advance this documentation repository, secure development context, or threat-modeling framework, consider exploring these adjacent development pathways:
-* Build a **Python script using PyTorch and Torchattacks** illustrating how to write an automated adversarial generation pipeline that calculates and applies a targeted FGSM perturbation mask over an input image tensor block.
-* Generate a **comprehensive Markdown table** explicitly comparing Vanilla FGSM, Basic Iterative Method (BIM/I-FGSM), Momentum Iterative FGSM (MI-FGSM), and Projected Gradient Descent (PGD) across time complexities, mathematical vector norms ($L_\infty$ vs. $L_2$), requirement for multi-step gradient calculation budgets, and adversarial transferability performance.
-* Establish an **automated performance profiling suite using Triton** to track the exact computational throughput, VRAM cache utilization, and processing latency metrics achieved when compiling a fused randomized input smoothing operation directly inside high-speed GPU SRAM registers.
+| Pathway | Year | Paper Link | Description |
+|---|---|---|---|
+| Build a Python script using PyTorch and Torchattacks | 2020 | [Torchattacks](https://github.com/Harry24k/adversarial-attacks-pytorch) | Automated adversarial generation pipeline. |
+| Generate a comprehensive Markdown table explicitly comparing variants | 2024 | [N/A](#) | Compare time complexities, mathematical vector norms, etc. |
+| Establish an automated performance profiling suite using Triton | 2024 | [N/A](#) | Track computational throughput, VRAM utilization, etc. |
+
 
 ***
 
